@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+  <!--1 最简单的是锚点回到顶部 -->
+
+
+  <!-- 2 scrolltop -->
+<!-- <body style="height:2000px;">
+    <button id="test" style="position:fixed;right:0;bottom:0">回到顶部</button>
+    <script>
+        test.onclick = function () {
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body> -->
+
+<!-- 【3】scrollTo() -->
+<!-- <body style="height:2000px;">
+    <button id="test" style="position:fixed;right:0;bottom:0">回到顶部</button>
+    <script>
+        test.onclick = function () {
+            scrollTo(0, 0);
+        }
+    </script>
+</body>-->
+
+
+<!-- 【4】scrollIntoView() Element.scrollIntoView方法滚动当前元素，进入浏览器的可见区域  和锚点基本一样-->
+<body style="height:2000px;">
+    <div id="target"></div>
+    <button id="test" style="position:fixed;right:0;bottom:0">回到顶部</button>
+    <script>
+        test.onclick = function () {
+            target.scrollIntoView();
+        }
+    </script>
+</body>
+</html>

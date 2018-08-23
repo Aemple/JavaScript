@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js回到顶部</title>
+    <style>
+        body {
+            background: coral;
+        }
+        #goTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            background: url(https://images2015.cnblogs.com/blog/783334/201510/783334-20151004165105543-1443124877.png) no-repeat center;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div> top.</div>
+    <br/>
+    <div> top.</div>
+    <br/>
+    <div> top.</div>
+    <br/>
+    <div> top.</div>
+    <br/>
+    <div>top.</div>
+    <br/>
+    <div>top.</div>
+    <br/>
+    <div>top.</div>
+    <br/>
+    <div> top.</div>
+    <br/>
+    <div> top.</div>
+    <br/>
+    <div> top.</div>
+    <br/>
+    <div> top.</div>
+    <br/>
+    <div> top.</div>
+    <br/>
+    <div> top.</div>
+    <br/>
+    <div> top.</div>
+    <br/>
+    <div> top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <div>I want to go back to the top.</div>
+    <br/>
+    <span id="goTop"></span>
+</body>
+    <script>
+        window.onload = function () {
+            var timer = null;
+            var goTop = document.getElementById("goTop"); //获取“回到顶部”的按钮
+            if (document.body.scrollTop + document.documentElement.scrollTop >= 500) {
+                    goTop.style.display = "block";
+                }
+                else {
+                    goTop.style.display = "none";
+                }     //如果不判断刷新在下面的时候就没有
+            goTop.onclick = function () { //点击按钮之后触发的函数
+                timer = setInterval(function () {
+                    var top = document.body.scrollTop + document.documentElement.scrollTop;//获取当前位置离顶部的距离
+                    var speed = top / 5;//设置回到顶部的速度
+                    console.log(top);
+                    console.log("speed",speed);
+                    
+                    if (document.body.scrollTop) {
+                        document.body.scrollTop -= speed;
+                    }
+                    else {
+                        document.documentElement.scrollTop -= speed;  
+                    }
+                    if (top == 0) {
+                        clearInterval(timer);
+                    }
+                }, 30);
+            };
+            window.onscroll = function () { //当距离大于500时才让按钮出现，否则就不显示
+                if (document.body.scrollTop + document.documentElement.scrollTop >= 500) {
+                    goTop.style.display = "block";
+                }
+                else {
+                    goTop.style.display = "none";
+                }
+            };
+            window.onmousewheel = function (e) {//当滚轮是向下滚时，就将向上滚的函数停止执行
+                if (e.wheelDelta < 0) clearInterval(timer);
+            };
+        };
+    </script>
+     <!-- document.body.scrollTop + document.documentElement.scrollTop;兼容处理 好像scrootop自己会向下取整-->
+</html>
+

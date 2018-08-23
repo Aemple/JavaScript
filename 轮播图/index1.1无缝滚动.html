@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>无缝滚动</title>
+</head>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        width: 600px;
+        height: 300px;
+        overflow: hidden;
+        margin: 100px auto;
+        position: relative;
+    }
+
+    img {
+        width: 600px;
+        height: 300px;
+        vertical-align: top;
+        /*取消底边的3px */
+    }
+
+    ul {
+        width: 500%;
+        height: 300px;
+        list-style: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    li {
+        float: left;
+    }
+</style>
+
+<body>
+    <div class="box" id="box">
+        <ul id="inner-box">
+            <li>
+                <img src="img/1.jpg">
+            </li>
+            <li>
+                <img src="img/2.jpg">
+            </li>
+            <li>
+                <img src="img/3.jpg">
+            </li>
+            <li>
+                <img src="img/4.jpg">
+            </li>
+            <li>
+                <img src="img/1.jpg">
+            </li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    var oUl = document.getElementById("inner-box");
+    var a = 0;          //定义一个变量用于设置left值
+    var timer = null;   //定义一个计时器
+    var target = 500;
+    timer = setInterval(autoPlay, 20);// 定义计时器每20毫秒执行一次
+    function autoPlay() { //执行每次执行函数，left值减1
+        a--;
+        a <= -400 ? a = 0 : a;
+        oUl.style.left = a + "%";
+    }
+    oBox.onmouseover = function () { //移入时清除计时器
+        clearInterval(timer);
+    }
+    oBox.onmouseout = function () { //移出时开始计时器
+        timer = setInterval(autoPlay, 10);
+    }
+</script>
+
+</html>

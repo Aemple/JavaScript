@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="img/title.jpg" type="image/png">
+	<title>jsan版轮播图</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		.show_div{
+			width: 400px;
+			height: 400px;
+			border: 2px solid black;
+			overflow: hidden;
+			margin: 0 auto;
+		}
+		.scroll_div{
+			height: 400px;
+			position: relative;
+		}
+		.scroll_div div{
+			width: 400px;
+			height: 400px;
+			background-color: cyan;
+			float: left;
+		}
+		.scroll_div p{
+			width: 400px;
+			height: 30px;
+			position: absolute;
+			bottom: 0;
+			background-color: black;
+			opacity: 0.7;
+			font-size: 20px;
+			color: white;
+			text-align: center;
+		}
+		.scroll_div img{
+			width: 400px;
+			height: 400px;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="show_div">
+		<div class="scroll_div"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	var showDiv = document.getElementsByClassName("show_div");
+	var scrollDiv = document.getElementsByClassName("scroll_div")[0];
+	/*数组*/
+	var data = [{url:"img/1.jpg",title:'张杰1'},{url:"img/2.jpg",title:"张杰2"},
+				{url:"img/3.jpg",title:"张杰3"},{url:"img/1.jpg",title:"张杰4"}];
+	scrollDiv.style.width = 400 * (data.length)+"px";
+	for (var i = 0; i < data.length; i++) {
+		/*创建div，并放进父级元素下面*/
+		var myDiv = document.createElement('div');
+        myDiv.innerHTML = '<p>'+data[i].title+'</p>'+'<img src = "'+data[i].url+'">';
+		scrollDiv.appendChild(myDiv);
+	}
+	/*轮播图代码 和第一种代码原理相同，*/
+	var left = 0;
+	setInterval(function(){
+		move();
+	},1000);
+	function move(){
+		var timer = setInterval(function(){
+			left -- ;
+			if (left%-400 == 0) {
+                console.log(left);
+                
+                console.log(left % -400);
+                
+				clearInterval(timer);
+			}
+			if (left == -1200) {
+				left = 0;
+			}
+			scrollDiv.style.marginLeft = left +"px";
+		},10);
+	}
+</script>
+</html>

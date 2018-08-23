@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+.img_div {
+    margin: 0 auto;
+    position: relative;
+    width: 531px;
+    height: 354px;
+    overflow: hidden;
+}
+img {
+    width: 531px;
+    height: 354px;
+}
+.mask {
+    position: absolute;
+    top: 354px;
+    left: 0;
+    width: 531px;
+    height: 354px;
+    background: rgba(101, 101, 101, 0.6);
+    color: #ffffff;
+    opacity: 1;
+    transition: all 1s ease;
+}
+.mask h3 {
+    text-align: center;
+    vertical-align: middle;
+    opacity: 0;
+    transition: all 700ms ease 400ms;
+}
+
+.img_div:hover .mask {
+    top: 0;
+    opacity: 1;
+}
+
+.img_div:hover h3 {
+    opacity: 1;
+}
+</style>
+<body>
+<div class="img_div">
+    <img src="img/ml.jpg">
+
+    <a href="#">
+        <div class="mask">
+            <h3>Aemple 我是一个大帅哥</h3>
+        </div>
+    </a>
+</div>
+</body>
+</html>
